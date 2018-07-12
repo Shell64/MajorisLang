@@ -291,7 +291,7 @@ expand Example struct ExampleTwo
 ```
 
 #### 14. Struct private keyword:
-Keyword "private" can be used as modifier for variables usage in its internal functions. It can not be used together with "foreign" keyword. Example:
+Keyword "private" can be used as modifier for variables declared inside struct declarations. It can be only accessed by structs internal functions. It can not be used together with "foreign" modifier. Example:
 ```c
 struct PrivateExample
 {
