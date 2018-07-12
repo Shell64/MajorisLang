@@ -258,7 +258,7 @@ struct Example
 ```
 
 * Note 1: Operators overload can be declared with the operator as function name. The above example shows overload for operator "+".
-* Note 2: Memory management for objects created inside overload will be managed by compiler.
+* Note 2: Memory management for objects created inside operators overload will be managed by compiler.
 * Note 3: Functions declared inside structs can not be called directly by other functions declared the same way. An exchanging object like in the example above for overload function is necessary.
 * Note 4: _init function is only called when combined with "new" keyword and its declaration is not required.
 
