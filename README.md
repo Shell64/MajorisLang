@@ -86,7 +86,7 @@ Will compile to raw and inlined numbers operations or SIMD. For typed languages 
 Must be declared as ```vec3 Varname;```
 
 ###### 5.6 vec4:
-Three dimension vector ("x" or "r", "y" or "g", "z" or "b", "w" or "a"). Stores four real numbers each. Swizzling indices is supported and an index can be accessed as ".x". Combining 2, 3 or 4 indices at same time will return a vec2, vec3 or vec4 respectively.
+Four dimension vector ("x" or "r", "y" or "g", "z" or "b", "w" or "a"). Stores four real numbers each. Swizzling indices is supported and an index can be accessed as ".x". Combining 2, 3 or 4 indices at same time will return a vec2, vec3 or vec4 respectively.
 Will compile to raw and inlined numbers operations or SIMD. For typed languages the compiler will default operation variables to "auto".
 Must be declared as ```vec4 Varname;```
 
