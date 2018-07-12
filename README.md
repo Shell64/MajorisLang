@@ -59,43 +59,38 @@ Each line instructions must be separed by semicolons (";") with the exception of
 Infix notation is used. Expression are written as A * (B + C) / D.
 
 #### 5. Data types implementations:
-###### 5.1 void:
-Stores nothing. The only value that can be assigned explicitly is "nil".
-Operations is already set on dynamic or typed languages.
-Must be declared as ```void Varname;```
-
-###### 5.2 number:
+###### 5.1 number:
 Stores real numbers.
 Operations is already set in dynamic languages. For typed languages the compiler will default to "auto".
 Must be declared as ```number Varname;```
 
-###### 5.3 string:
+###### 5.2 string:
 Stores sequence of characters. A length value must be specified in their declaration.
 Operations is already set in dynamic languages. For typed languages the compiler will generate its own library with type "uint8_t" or use language default implementation.
 The language reserves its right for automatic string conversions when required by a function argument or any other expression when possible.
 Must be declared as ```string Varname[Length];```
 
-###### 5.4 bool:
+###### 5.3 bool:
 Store boolean values ("true" or "false").
 Operations is already set in dynamic languages. For typed languages the compiler will default to uint8_t or use language default implementation.
 Must be declared as ```bool Varname;```
 
-###### 5.5 vec2:
+###### 5.4 vec2:
 Two dimension vector ("x" or "r", "y" or "g"). Stores two real numbers each. Swizzling indices is supported and an index can be accessed as ".x". Combining 2 indices at same time (as ".xy") will return a vec2. 
 Will compile to raw and inlined numbers operations or SIMD. For typed languages the compiler will default operation variables to "auto".
 Must be declared as ```vec2 Varname;```
 
-###### 5.6 vec3:
+###### 5.5 vec3:
 Three dimension vector ("x" or "r", "y" or "g", "z" or "b"). Stores three real numbers each. Swizzling indices is supported and an index can be accessed as ".x". Combining 2 or 3 (as ".xy" or ".xyz") indices at same time will return a vec2 or vec3 respectively.
 Will compile to raw and inlined numbers operations or SIMD. For typed languages the compiler will default operation variables to "auto".
 Must be declared as ```vec3 Varname;```
 
-###### 5.7 vec4:
+###### 5.6 vec4:
 Three dimension vector ("x" or "r", "y" or "g", "z" or "b", "w" or "a"). Stores four real numbers each. Swizzling indices is supported and an index can be accessed as ".x". Combining 2, 3 or 4 indices at same time will return a vec2, vec3 or vec4 respectively.
 Will compile to raw and inlined numbers operations or SIMD. For typed languages the compiler will default operation variables to "auto".
 Must be declared as ```vec4 Varname;```
 
-###### 5.8 matNxN (like "mat22", "mat33", "mat44", etc.):
+###### 5.7 matNxN (like "mat22", "mat33", "mat44", etc.):
 NxN dimension matrix. Each row or column can be swizzled to vec2, vec3 or vec4.
 Will compile to raw and inlined numbers operations or SIMD. For typed languages the compiler will default operation variables to "auto".
 Must be declared as ```matNN Varname;```
@@ -117,13 +112,7 @@ Arrays can be declared based on standard types and declared structs. Array can b
 ```
 
 #### 7. Data declaration initialization syntax:
-###### 7.1 void:
-```c
-void Varname;
-void Varname = nil;
-```
-
-###### 7.2 number:
+###### 7.1 number:
 ```c
 number Varname;
 number Varname = 5;
@@ -133,7 +122,7 @@ number Varname = 0x03;
 number Varname = 0.2f;
 ```
 
-###### 7.3 string:
+###### 7.2 string:
 ```c
 string Varname[5]
 string Varname[] = "Hello";
@@ -143,29 +132,29 @@ string Varname[5] = "Hello";
 * Note 1: Empty string length field is ONLY allowed when the string is declared explicitly. The value assigned can not be a concatenation operation nor function call.
 * Note 2: String initialization fields can be smaller or equal to declared string size when specified. Initializing bigger values than the specified is not allowed.
 
-###### 7.4 bool:
+###### 7.3 bool:
 ```c
 bool Varname = false;
 bool Varname = true;
 ```
 
-###### 7.5 vec2:
+###### 7.4 vec2:
 ```c
 vec2 Varname = vec2(2.0, -1);
 ```
-###### 7.6 vec3:
+###### 7.5 vec3:
 ```c
 vec3 Varname = vec3(2.0, -1, 0.5);
 ```
-###### 7.7 vec4:
+###### 7.6 vec4:
 ```c
 vec4 Varname = vec4(2.0, -0.2, 0.15, -6.0);
 ```
-###### 7.8 matNN:
+###### 7.7 matNN:
 ```c
 matNN Varname = matNN(vecN(...), ...));
 ```
-###### 7.9a struct:
+###### 7.8 struct:
 ```c
 struct Example
 {
@@ -177,7 +166,7 @@ struct Example
 Example Test[2] = {{.Price = 1; .Name = "test"}, {.Price = 0.59; .Name = "test2"}};
 ```
 
-###### 7.9b array:
+###### 7.9 array:
 ```c
 	datatype Varname[] = {ValueIndex1, ...}
 	datatype Varname[ArrayLength] = {ValueIndex1, ...}
@@ -236,6 +225,7 @@ until(<logical expression>)
 
 * Note 1: Functions can have a maximum of 127 arguments or compiler will error.
 * Note 2: Functions can be overloaded if declared twice, but must return the same datatype.
+* Note 3: Functions with no return, ```void``` must be specified.
 
 #### 11. Function declaration inside structs and operator overload:
 ```c
