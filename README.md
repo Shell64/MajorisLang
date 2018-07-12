@@ -1,5 +1,8 @@
 ### Majoris Language Specification 1.0
 
+###### Author:
+Leandro Fonseca (refeer: https://github.com/Shell64/MajorisLang/ )
+
 #### Description:
 A transformation language.
 
@@ -92,11 +95,11 @@ Must be declared as ```cmatNN Varname;```
 struct:
 A custom data structure can be declared based on standard types.
 ```c
-	struct Name
-	{
-		<datatype> Varname
-		<datatype> Varname[ArrayLength]
-	}
+struct Name
+{
+	<datatype> Varname
+	<datatype> Varname[ArrayLength]
+}
 ```
 array:
 Arrays can be declared based on standard types and declared structs. Array can be declared inside struct declarations.
@@ -105,65 +108,65 @@ Arrays can be declared based on standard types and declared structs. Array can b
 #### Data declaration initialization syntax:
 void:
 ```c
-	void Varname;
-	void Varname = nil;
+void Varname;
+void Varname = nil;
 ```
 
 number:
 ```c
-	number Varname;
-	number Varname = 5;
-	number Varname = 0;
-	number Varname = -1.0;
-	number Varname = 0x03;
-	number Varname = 0.2f;
+number Varname;
+number Varname = 5;
+number Varname = 0;
+number Varname = -1.0;
+number Varname = 0x03;
+number Varname = 0.2f;
 ```
 
 string:
 ```c
-	string Varname[5]
-	string Varname[] = "Hello";
-	string Varname[5] = "Hello";
+string Varname[5]
+string Varname[] = "Hello";
+string Varname[5] = "Hello";
 ```
 
 ##Note 1: Empty string length field is ONLY allowed when the string is declared explicitly. The value assigned can not be a concatenation operation nor function call.
 ##Note 2: String initialization fields can be smaller or equal to declared string size when specified. Initializing bigger values than the specified is not allowed.
 
-##bool:
+###### bool:
 ```c
-	bool VarnaForeignme = false;
-	bool Varname = true;
+bool VarnaForeignme = false;
+bool Varname = true;
 ```
 
-##vec2:
+###### vec2:
 ```c
-	vec2 Varname = vec2(2.0, -1);
+vec2 Varname = vec2(2.0, -1);
 ```
-##vec3:
+###### vec3:
 ```c
-	vec3 Varname = vec3(2.0, -1, 0.5);
+vec3 Varname = vec3(2.0, -1, 0.5);
 ```
-##vec4:
+###### vec4:
 ```c
-	vec4 Varname = vec4(2.0, -0.2, 0.15, -6.0);
+vec4 Varname = vec4(2.0, -0.2, 0.15, -6.0);
 ```
-##matNN:
+###### matNN:
 ```c
-	matNN Varname = matNN(vecN(...), ...));
+matNN Varname = matNN(vecN(...), ...));
 ```
-##struct:
+###### struct:
 ```c
-	struct Example
-	{
-		number Price;
-		string Name[12];
-	}
-	
-	<struct name> <variable name> = {.<struct data index> = <value>, ...};
-	Example Test[2] = {{.Price = 1; .Name = "test"}, {.Price = 0.59; .Name = "test2"}};
+struct Example
+{
+	number Price;
+	string Name[12];
+}
+
+<struct name> <variable name> = {.<struct data index> = <value>, ...};
+Example Test[2] = {{.Price = 1; .Name = "test"}, {.Price = 0.59; .Name = "test2"}};
 ```
 
-##array:
+###### array:
 ```c
 	datatype Varname[] = {ValueIndex1, ...}
 	datatype Varname[ArrayLength] = {ValueIndex1, ...}
@@ -171,53 +174,53 @@ string:
 
 #### Conditionals declaration:
 ```c
-	if(<logical expression>)
-	{
-		<code>
-	}
-	elseif(<logical expression>)
-	{
-		<code>
-	}
-	else
-	{
-		<code>
-	}
+if(<logical expression>)
+{
+	<code>
+}
+elseif(<logical expression>)
+{
+	<code>
+}
+else
+{
+	<code>
+}
 ```
 
 #### Loops declaration:
 for:
 ```c
-	for(<initial number value>, <target number value>, <step number value>)
-	{
-		<code>
-	}
+for(<initial number value>, <target number value>, <step number value>)
+{
+	<code>
+}
 ```
 
 while:
 ```c
-	while(<logical expression>)
-	{
-		<code>
-	}
+while(<logical expression>)
+{
+	<code>
+}
 ```
 
 repeat:
 ```c
-	repeat
-	{
-		<code>
-	}
-	until(<logical expression>)
+repeat
+{
+	<code>
+}
+until(<logical expression>)
 ```
 
 #### Function declaration:
 ```c
-	<datatype> Name(<datatype> Arg1, ...)
-	{
-		<code>
-		return;
-	}
+<datatype> Name(<datatype> Arg1, ...)
+{
+	<code>
+	return;
+}
 ```
 
 Note 1: Functions can have a maximum of 127 arguments or compiler will error.
@@ -270,63 +273,63 @@ void Name()
 #### Struct inheritance declaration:
 Keyword "expand" must be used with a different struct name, values or functions with same name inside will replace the original one.
 ```c
-	expand Example struct ExampleTwo
-	{
-		number Price = 2.0;
-	}
+expand Example struct ExampleTwo
+{
+	number Price = 2.0;
+}
 ```
 
 #### Struct private keyword:
 Keyword "private" can be used as modifier for variables usage in its internal functions. It can not be used together with "foreign" keyword. Example:
 ```c
-	struct PrivateExample
+struct PrivateExample
+{
+	private number Test;
+
+	void doStuff()
 	{
-		private number Test;
-
-		void doStuff()
-		{
-			Test = 1;
-		}
-
-		void doStuff2()
-		{
-			Test = 2;
-		}
+		Test = 1;
 	}
+
+	void doStuff2()
+	{
+		Test = 2;
+	}
+}
 ```
 #### Foreign objects interface:
 The "foreign" keyword is used to identify data structures that come outside of code. They are avaiable in the compiled language's framework. To work with them they must be declared before as below:
 
 Foreign function declaration:
 ```c
-	foreign (<compiled name>) <datatype> <Name>(<datatype> Arg1, ...);
-	foreign (love.graphics.setColor) void love_graphics_setColor(number r, number g, number b, number a);
+foreign (<compiled name>) <datatype> <Name>(<datatype> Arg1, ...);
+foreign (love.graphics.setColor) void love_graphics_setColor(number r, number g, number b, number a);
 ```
 
 Complex foreign objects declaration example abstracting love's ByteData API:
 ```c
-	foreign struct Pointer{}
+foreign struct Pointer{}
 
-	foreign struct Data
-	{
-		Data clone();
-		Pointer getPointer();
-		number getSize();
-		string[] getString();
-		bool release();
-		string[] type();
-		bool typeOf(string[] Name);
-	}
+foreign struct Data
+{
+	Data clone();
+	Pointer getPointer();
+	number getSize();
+	string[] getString();
+	bool release();
+	string[] type();
+	bool typeOf(string[] Name);
+}
 
-	foreign (print) void print(string Var);
+foreign (print) void print(string Var);
 
-	foreign (love.data.newByteData) void love_data_newByteData(string[] Data);
+foreign (love.data.newByteData) void love_data_newByteData(string[] Data);
 ```
 
 #### Comments and comment blocks:
 ```c
-	// for line comments
-	/* comment */ for comment blocks
+// for line comments
+/* comment */ for comment blocks
 ```
 
 #### Language reserved keywords:
