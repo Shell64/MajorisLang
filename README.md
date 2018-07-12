@@ -101,8 +101,8 @@ A custom data structure can be declared based on standard types.
 ```c
 struct Name
 {
-	<datatype> Varname
-	<datatype> Varname[ArrayLength]
+	<datatype> Varname;
+	<datatype> Varname[ArrayLength];
 }
 ```
 ###### 6.2 array:
