@@ -330,7 +330,7 @@ foreign struct Data
 	bool typeOf(string[] Name);
 }
 
-##### 15.3 foreign (print) void print(string Var);
+foreign (print) void print(string Var);
 
 foreign (love.data.newByteData) void love_data_newByteData(string[] Data);
 ```
