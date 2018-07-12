@@ -140,8 +140,8 @@ string Varname[] = "Hello";
 string Varname[5] = "Hello";
 ```
 
-Note 1: Empty string length field is ONLY allowed when the string is declared explicitly. The value assigned can not be a concatenation operation nor function call.
-Note 2: String initialization fields can be smaller or equal to declared string size when specified. Initializing bigger values than the specified is not allowed.
+* Note 1: Empty string length field is ONLY allowed when the string is declared explicitly. The value assigned can not be a concatenation operation nor function call.
+* Note 2: String initialization fields can be smaller or equal to declared string size when specified. Initializing bigger values than the specified is not allowed.
 
 ###### 7.4 bool:
 ```c
@@ -234,8 +234,8 @@ until(<logical expression>)
 }
 ```
 
-Note 1: Functions can have a maximum of 127 arguments or compiler will error.
-Note 2: Functions can be overloaded if declared twice, but must return the same datatype.
+* Note 1: Functions can have a maximum of 127 arguments or compiler will error.
+* Note 2: Functions can be overloaded if declared twice, but must return the same datatype.
 
 #### 11. Function declaration inside structs and operator overload:
 ```c
@@ -267,10 +267,10 @@ struct Example
 }
 ```
 
-Note 1: Operators overload can be declared with the operator as function name. The above example shows overload for operator "+".
-Note 2: Memory management for objects created inside overload will be managed by compiler.
-Note 3: Functions declared inside structs can not be called directly by other functions declared the same way. An exchanging object like in the example above for overload function is necessary.
-Note 4: _init function is only called when combined with "new" keyword and its declaration is not required.
+* Note 1: Operators overload can be declared with the operator as function name. The above example shows overload for operator "+".
+* Note 2: Memory management for objects created inside overload will be managed by compiler.
+* Note 3: Functions declared inside structs can not be called directly by other functions declared the same way. An exchanging object like in the example above for overload function is necessary.
+* Note 4: _init function is only called when combined with "new" keyword and its declaration is not required.
 
 #### 12. Recursive function declarations:
 The following function will generate an infinite loop as an example:
