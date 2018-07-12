@@ -143,7 +143,7 @@ Note 2: String initialization fields can be smaller or equal to declared string 
 
 ###### 7.4 bool:
 ```c
-bool VarnaForeignme = false;
+bool Varname = false;
 bool Varname = true;
 ```
 
