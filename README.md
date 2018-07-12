@@ -10,7 +10,6 @@ A transformation language.
 C, Lua and GLSL.
 
 #### 4. Language semantic:
-Each line instructions must be separed by semicolons (";") with the exception of language lexical structures that ends enclosed by brackets or parenthesis.
 
 ###### 4.1 Arithmetic operators:
 ```
@@ -53,44 +52,50 @@ UTF-8 for variable names must be supported. The language however reserves its ri
 ###### 4.6 Variable shadowing:
 Variable shadowing is not allowed and compiler will error when any variable declaration masking another. Structs expands are allowed to replace any other declaration or initialization inherited.
 
+###### 4.7 Instruction endings:
+Each line instructions must be separed by semicolons (";") with the exception of language lexical structures that ends enclosed by brackets or parenthesis.
+
+###### 4.8 Arithmetic notation:
+Infix notation is used. Expression are written as A * (B + C) / D.
+
 #### 5. Data types implementations:
-###### void:
+###### 5.1 void:
 Stores nothing. The only value that can be assigned explicitly is "nil".
 Operations is already set on dynamic or typed languages.
 Must be declared as ```cvoid Varname;```
 
-###### 5.1 number:
+###### 5.2 number:
 Stores real numbers.
 Operations is already set in dynamic languages. For typed languages the compiler will default to "auto".
 Must be declared as ```cnumber Varname;```
 
-###### 5.2 string:
+###### 5.3 string:
 Stores sequence of characters. A length value must be specified in their declaration.
 Operations is already set in dynamic languages. For typed languages the compiler will generate its own library with type "uint8_t" or use language default implementation.
 The language reserves its right for automatic string conversions when required by a function argument or any other expression when possible.
 Must be declared as ```cstring Varname[Length];```
 
-###### 5.3 bool:
+###### 5.4 bool:
 Store boolean values ("true" or "false").
 Operations is already set in dynamic languages. For typed languages the compiler will default to uint8_t or use language default implementation.
 Must be declared as ```cbool Varname;```
 
-###### 5.4 vec2:
+###### 5.5 vec2:
 Two dimension vector ("x" or "r", "y" or "g"). Stores two real numbers each. Swizzling indices is supported and a index can be accessed as ".x". Combining 2 indices at same time (as ".xy") will return a vec2. 
 Will compile to raw and inlined numbers operations or SIMD. For typed languages the compiler will default operation variables to "auto".
 Must be declared as ```cvec2 Varname;```
 
-###### 5.5 vec3:
+###### 5.6 vec3:
 Three dimension vector ("x" or "r", "y" or "g", "z" or "b"). Stores three real numbers each. Swizzling indices is supported and a index can be accessed as ".x". Combining 2 or 3 (as ".xy" or ".xyz") indices at same time will return a vec2 or vec3 respectively.
 Will compile to raw and inlined numbers operations or SIMD. For typed languages the compiler will default operation variables to "auto".
 Must be declared as ```cvec3 Varname;```
 
-###### 5.6 vec4:
+###### 5.7 vec4:
 Three dimension vector ("x" or "r", "y" or "g", "z" or "b", "w" or "a"). Stores four real numbers each. Swizzling indices is supported and a index can be accessed as ".x". Combining 2, 3 or 4 indices at same time will return a vec2, vec3 or vec4 respectively.
 Will compile to raw and inlined numbers operations or SIMD. For typed languages the compiler will default operation variables to "auto".
 Must be declared as ```cvec4 Varname;```
 
-###### 5.7 matNxN (like "mat22", "mat33", "mat44", etc.):
+###### 5.8 matNxN (like "mat22", "mat33", "mat44", etc.):
 NxN dimension matrix. Each row or column can be swizzled to vec2, vec3 or vec4.
 Will compile to raw and inlined numbers operations or SIMD. For typed languages the compiler will default operation variables to "auto".
 Must be declared as ```cmatNN Varname;```
@@ -133,8 +138,8 @@ string Varname[] = "Hello";
 string Varname[5] = "Hello";
 ```
 
-##Note 1: Empty string length field is ONLY allowed when the string is declared explicitly. The value assigned can not be a concatenation operation nor function call.
-##Note 2: String initialization fields can be smaller or equal to declared string size when specified. Initializing bigger values than the specified is not allowed.
+Note 1: Empty string length field is ONLY allowed when the string is declared explicitly. The value assigned can not be a concatenation operation nor function call.
+Note 2: String initialization fields can be smaller or equal to declared string size when specified. Initializing bigger values than the specified is not allowed.
 
 ###### 7.4 bool:
 ```c
@@ -193,7 +198,7 @@ else
 ```
 
 #### 9. Loops declaration:
-###### 9.1 for:
+##### 9.1 for:
 ```c
 for(<initial number value>, <target number value>, <step number value>)
 {
@@ -201,7 +206,7 @@ for(<initial number value>, <target number value>, <step number value>)
 }
 ```
 
-###### 9.2 while:
+##### 9.2 while:
 ```c
 while(<logical expression>)
 {
@@ -209,7 +214,7 @@ while(<logical expression>)
 }
 ```
 
-###### 9.3 repeat:
+##### 9.3 repeat:
 ```c
 repeat
 {
@@ -304,13 +309,13 @@ struct PrivateExample
 #### 15. Foreign objects interface:
 The "foreign" keyword is used to identify data structures that come outside of code. They are avaiable in the compiled language's framework. To work with them they must be declared before as below:
 
-###### 15.1 Foreign function declaration:
+##### 15.1 Foreign function declaration:
 ```c
 foreign (<compiled name>) <datatype> <Name>(<datatype> Arg1, ...);
 foreign (love.graphics.setColor) void love_graphics_setColor(number r, number g, number b, number a);
 ```
 
-###### 15.2 Complex foreign objects declaration example abstracting love's ByteData API:
+##### 15.2 Complex foreign objects declaration example abstracting love's ByteData API:
 ```c
 foreign struct Pointer{}
 
@@ -325,7 +330,7 @@ foreign struct Data
 	bool typeOf(string[] Name);
 }
 
-###### 15.3 foreign (print) void print(string Var);
+##### 15.3 foreign (print) void print(string Var);
 
 foreign (love.data.newByteData) void love_data_newByteData(string[] Data);
 ```
@@ -341,9 +346,9 @@ foreign, private, struct, expand, if, elseif, else, return, break, repeat, until
 
 #### 18. Compiler notes:
 
-###### 18.1 Optimizations:
+##### 18.1 Optimizations:
 Compiler is allowed to optimize expressions, inline functions, precompute loops and remove dead code although optimization implementation is not required, but if done must have the ability to disable optimization.
 
-###### 18.2 Obfuscation:
+##### 18.2 Obfuscation:
 Compiler is allowed to obfuscate output and also generate unreadable pieces of code for proper syntax conversion. For explicit obfuscation the compiler must have the ability to enable obfuscation.
 				
