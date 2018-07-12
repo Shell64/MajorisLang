@@ -330,7 +330,7 @@ foreign (love.data.newByteData) void love_data_newByteData(string[] Data);
 #### 16. Comments and comment blocks:
 ```c
 // for line comments
-/* comment */ for comment blocks
+/* for comment blocks */
 ```
 
 #### 17. Language reserved keywords:
