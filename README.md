@@ -112,7 +112,9 @@ struct Name
 ```
 ###### 6.2 array:
 Arrays can be declared based on standard types and declared structs. Array can be declared inside struct declarations.
-```c<datatype> Varname[ArrayLength];```
+```c
+<datatype> Varname[ArrayLength];
+```
 
 #### 7. Data declaration initialization syntax:
 ###### 7.1 void:
