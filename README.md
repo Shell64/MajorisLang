@@ -3,13 +3,13 @@
 #### Description:
 A transformation language.
 		
-		#### Influenced by:
+#### Influenced by:
 C, Lua and GLSL.
 		
-		#### Language semantic:
+#### Language semantic:
 Each line instructions must be separed by semicolons (";") with the exception of language lexical structures that ends enclosed by brackets or parenthesis.
 		
-		Arithmetic operators:
+###### Arithmetic operators:
 +: addition or string concatenation.
 	-: subtraction
 *: multiplication
@@ -17,7 +17,7 @@ Each line instructions must be separed by semicolons (";") with the exception of
 ^: power
 %: modulo
 
-Relational operators:
+###### Relational operators:
 > : greater than
 >=: greater or equal than
 < : smaller than
@@ -25,14 +25,14 @@ Relational operators:
 ==: equal
 !=: not equal
 
-Logical operators:
+###### Logical operators:
 ! : NOT
 &&: AND
 ||: OR
 ? : select AND
 : : select OR
 
-Bitwise operators:
+###### Bitwise operators:
 ~ : bitwise NOT
 & : bitwise AND
 | : bitwise OR
@@ -43,10 +43,10 @@ Bitwise operators:
 #### Variable names:
 UTF-8 for variable names must be supported. The language however reserves its right for exclusive usage of any keyword, syntax or operator. These can not be declared as variable name (except for foreign compiled name objects).
 		
-		#### Variable shadowing:
+#### Variable shadowing:
 Variable shadowing is not allowed and compiler will error with any variable declaration masking another. Structs expands are allowed to replace any other declaration or initialization inherited.
 		
-		#### Data types implementations:
+#### Data types implementations:
 void:
 Stores nothing. The only value that can be assigned explicitly is "nil".
 Operations is already set on dynamic or typed languages.
