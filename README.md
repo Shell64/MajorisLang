@@ -1,15 +1,15 @@
 ### Majoris Language Specification 1.0
 
-###### Author:
+* Author:
 Leandro Fonseca (refeer: https://github.com/Shell64/MajorisLang/ )
 
-#### Description:
+* Description:
 A transformation language.
 
-#### Influenced by:
+* Influenced by:
 C, Lua and GLSL.
 
-#### Language semantic:
+* Language semantic:
 Each line instructions must be separed by semicolons (";") with the exception of language lexical structures that ends enclosed by brackets or parenthesis.
 
 ###### Arithmetic operators:
@@ -51,7 +51,7 @@ Each line instructions must be separed by semicolons (";") with the exception of
 UTF-8 for variable names must be supported. The language however reserves its right for exclusive usage of any keyword, syntax or operator. These can not be declared as variable name (except for foreign compiled name objects).
 
 #### Variable shadowing:
-Variable shadowing is not allowed and compiler will error with any variable declaration masking another. Structs expands are allowed to replace any other declaration or initialization inherited.
+Variable shadowing is not allowed and compiler will error when any variable declaration masking another. Structs expands are allowed to replace any other declaration or initialization inherited.
 
 #### Data types implementations:
 ###### void:
