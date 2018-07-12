@@ -124,7 +124,7 @@ number Varname = 0.2f;
 
 ###### 7.2 string:
 ```c
-string Varname[5]
+string Varname[5];
 string Varname[] = "Hello";
 string Varname[5] = "Hello";
 ```
