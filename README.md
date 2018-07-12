@@ -13,36 +13,40 @@ C, Lua and GLSL.
 Each line instructions must be separed by semicolons (";") with the exception of language lexical structures that ends enclosed by brackets or parenthesis.
 
 ###### Arithmetic operators:
+```
 +: addition or string concatenation.
 -: subtraction
 *: multiplication
 /: division
 ^: power
 %: modulo
-
+```
 ###### Relational operators:
+```
 > : greater than
 >=: greater or equal than
 < : smaller than
 <=: smaller or equal than
 ==: equal
 !=: not equal
-
+```
 ###### Logical operators:
+```
 ! : NOT
 &&: AND
 ||: OR
 ? : select AND
 : : select OR
-
+```
 ###### Bitwise operators:
+```
 ~ : bitwise NOT
 & : bitwise AND
 | : bitwise OR
 ^ : bitwise XOR
 <<: bitwise left shift
 >>: bitwise right shift
-
+```
 #### Variable names:
 UTF-8 for variable names must be supported. The language however reserves its right for exclusive usage of any keyword, syntax or operator. These can not be declared as variable name (except for foreign compiled name objects).
 
@@ -50,43 +54,43 @@ UTF-8 for variable names must be supported. The language however reserves its ri
 Variable shadowing is not allowed and compiler will error with any variable declaration masking another. Structs expands are allowed to replace any other declaration or initialization inherited.
 
 #### Data types implementations:
-void:
+###### void:
 Stores nothing. The only value that can be assigned explicitly is "nil".
 Operations is already set on dynamic or typed languages.
 Must be declared as ```cvoid Varname;```
 
-number:
+###### number:
 Stores real numbers.
 Operations is already set in dynamic languages. For typed languages the compiler will default to "auto".
 Must be declared as ```cnumber Varname;```
 
-string:
+###### string:
 Stores sequence of characters. A length value must be specified in their declaration.
 Operations is already set in dynamic languages. For typed languages the compiler will generate its own library with type "uint8_t" or use language default implementation.
 The language reserves its right for automatic string conversions when required by a function argument or any other expression when possible.
 Must be declared as ```cstring Varname[Length];```
 
-bool:
+###### bool:
 Store boolean values ("true" or "false").
 Operations is already set in dynamic languages. For typed languages the compiler will default to uint8_t or use language default implementation.
 Must be declared as ```cbool Varname;```
 
-vec2:
+###### vec2:
 Two dimension vector ("x" or "r", "y" or "g"). Stores two real numbers each. Swizzling indices is supported and a index can be accessed as ".x". Combining 2 indices at same time (as ".xy") will return a vec2. 
 Will compile to raw and inlined numbers operations or SIMD. For typed languages the compiler will default operation variables to "auto".
 Must be declared as ```cvec2 Varname;```
 
-vec3:
+###### vec3:
 Three dimension vector ("x" or "r", "y" or "g", "z" or "b"). Stores three real numbers each. Swizzling indices is supported and a index can be accessed as ".x". Combining 2 or 3 (as ".xy" or ".xyz") indices at same time will return a vec2 or vec3 respectively.
 Will compile to raw and inlined numbers operations or SIMD. For typed languages the compiler will default operation variables to "auto".
 Must be declared as ```cvec3 Varname;```
 
-vec4:
+###### vec4:
 Three dimension vector ("x" or "r", "y" or "g", "z" or "b", "w" or "a"). Stores four real numbers each. Swizzling indices is supported and a index can be accessed as ".x". Combining 2, 3 or 4 indices at same time will return a vec2, vec3 or vec4 respectively.
 Will compile to raw and inlined numbers operations or SIMD. For typed languages the compiler will default operation variables to "auto".
 Must be declared as ```cvec4 Varname;```
 
-matNxN (like "mat22", "mat33", "mat44", etc.):
+###### matNxN (like "mat22", "mat33", "mat44", etc.):
 NxN dimension matrix. Each row or column can be swizzled to vec2, vec3 or vec4.
 Will compile to raw and inlined numbers operations or SIMD. For typed languages the compiler will default operation variables to "auto".
 Must be declared as ```cmatNN Varname;```
