@@ -62,43 +62,43 @@ Infix notation is used. Expression are written as A * (B + C) / D.
 ###### 5.1 void:
 Stores nothing. The only value that can be assigned explicitly is "nil".
 Operations is already set on dynamic or typed languages.
-Must be declared as ```cvoid Varname;```
+Must be declared as ```void Varname;```
 
 ###### 5.2 number:
 Stores real numbers.
 Operations is already set in dynamic languages. For typed languages the compiler will default to "auto".
-Must be declared as ```cnumber Varname;```
+Must be declared as ```number Varname;```
 
 ###### 5.3 string:
 Stores sequence of characters. A length value must be specified in their declaration.
 Operations is already set in dynamic languages. For typed languages the compiler will generate its own library with type "uint8_t" or use language default implementation.
 The language reserves its right for automatic string conversions when required by a function argument or any other expression when possible.
-Must be declared as ```cstring Varname[Length];```
+Must be declared as ```string Varname[Length];```
 
 ###### 5.4 bool:
 Store boolean values ("true" or "false").
 Operations is already set in dynamic languages. For typed languages the compiler will default to uint8_t or use language default implementation.
-Must be declared as ```cbool Varname;```
+Must be declared as ```bool Varname;```
 
 ###### 5.5 vec2:
 Two dimension vector ("x" or "r", "y" or "g"). Stores two real numbers each. Swizzling indices is supported and a index can be accessed as ".x". Combining 2 indices at same time (as ".xy") will return a vec2. 
 Will compile to raw and inlined numbers operations or SIMD. For typed languages the compiler will default operation variables to "auto".
-Must be declared as ```cvec2 Varname;```
+Must be declared as ```vec2 Varname;```
 
 ###### 5.6 vec3:
 Three dimension vector ("x" or "r", "y" or "g", "z" or "b"). Stores three real numbers each. Swizzling indices is supported and a index can be accessed as ".x". Combining 2 or 3 (as ".xy" or ".xyz") indices at same time will return a vec2 or vec3 respectively.
 Will compile to raw and inlined numbers operations or SIMD. For typed languages the compiler will default operation variables to "auto".
-Must be declared as ```cvec3 Varname;```
+Must be declared as ```vec3 Varname;```
 
 ###### 5.7 vec4:
 Three dimension vector ("x" or "r", "y" or "g", "z" or "b", "w" or "a"). Stores four real numbers each. Swizzling indices is supported and a index can be accessed as ".x". Combining 2, 3 or 4 indices at same time will return a vec2, vec3 or vec4 respectively.
 Will compile to raw and inlined numbers operations or SIMD. For typed languages the compiler will default operation variables to "auto".
-Must be declared as ```cvec4 Varname;```
+Must be declared as ```vec4 Varname;```
 
 ###### 5.8 matNxN (like "mat22", "mat33", "mat44", etc.):
 NxN dimension matrix. Each row or column can be swizzled to vec2, vec3 or vec4.
 Will compile to raw and inlined numbers operations or SIMD. For typed languages the compiler will default operation variables to "auto".
-Must be declared as ```cmatNN Varname;```
+Must be declared as ```matNN Varname;```
 
 #### 6. Data structures:
 ###### 6.1 struct:
