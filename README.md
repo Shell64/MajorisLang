@@ -224,7 +224,7 @@ until(<logical expression>)
 ```
 
 * Note 1: Functions can have a maximum of 127 arguments or compiler will error.
-* Note 2: Functions can be overloaded if declared twice, but must return the same datatype.
+* Note 2: Functions can be overloaded if declared twice, but must return the same datatype. At least one argument must be different or compile will error.
 * Note 3: Functions with no return, ```void``` must be specified.
 
 #### 11. Function declaration inside structs and operator overload:
